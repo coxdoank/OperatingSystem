@@ -1,0 +1,17 @@
+----Install Telnet Ubuntu----
+sudo apt install telnetd -y
+
+--check telnet status
+sudo systemctl status inetd 
+
+onfigure the Firewall for Telnet, enable the firewall using the ufw
+sudo ufw enable
+
+As the communication of the machines in telnet is done through port 23, so allow the connections on this port using the command:
+sudo ufw allow 23
+
+Test Telnet Server
+telnet 192.168.1.25
+
+remove telnet from ubuntu
+sudo apt purge telnetd -y
