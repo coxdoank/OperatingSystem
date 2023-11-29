@@ -1,0 +1,8 @@
+To clean partial packages
+$ sudo apt-get autoclean
+
+To remove unused dependencies
+$ sudo apt-get autoremove
+
+To auto cleanup apt-cache
+$ sudo apt-get clean
