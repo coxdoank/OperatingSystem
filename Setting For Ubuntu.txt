@@ -1,3 +1,55 @@
+sudo apt-get install mysql-server
+mysql --version
+sudo systemctl status mysql.service
+sudo mysql_secure_installation
+
+connect to mysql
+alter user 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'P@ssw0rd.123';
+create user "root"@"%" identified by "password disini";
+CREATE USER 'root'@'%' IDENTIFIED BY 'mysql.123';
+
+GRANT ALL PRIVILEGES ON * . * TO 'root'@'%';
+GRANT ALL PRIVILEGES ON `%`.* TO 'root'@'localhost' IDENTIFIED BY 'P@ssw0rd.123' WITH GRANT OPTION;
+---------------------------
+Install NGINX + PHP
+sudo apt update
+sudo apt install nginx
+nginx -v (cek version)
+sudo systemctl status nginx (cek status nginx)
+sudo systemctl enable --now nginx (jika status service disable, running nginx)
+sudo systemctl reload nginx (cara reload service nginx)
+hostname -I (cek ip hostname nginx)
+sudo nano sites-available/default
+sudo systemctl reload nginx 
+sudo apt install php8.1-fpm -y
+sudo systemctl status php8.1-fpm 
+
+sudo apt install mysql-server -y
+ALTER USER 'root'@'localhost' identified with mysql_native_password by 'P@ssw0rd.123'
+CREATE USER 'root'@'%' identified by "P@ssw0rd.123";
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
+FLUSH PRIVILEGES;
+
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+change bin-address = 0.0.0.0
+
+sudo iptables -A INPUT -p tcp --destination-port 3306 -j ACCEPT (Allow Firewall for MYSQL)
+
+tail -f /var/log/nginx/error.log
+
+sudo nano /etc/php//8.1/fpm/php.ini
+
+----------------------------
+
+https://medium.com/swlh/create-your-own-linux-server-with-nginx-for-beginners-with-ip-public-40c6c004b0b4
+
+sudo ufw app list
+sudo ufw allow 'Nginx Full' (Now we have to enable the FULL profile)
+sudo ufw status
+
+sudo apt install php8.1-fpm
+
+-----------------------------
 To clean partial packages
 $ sudo apt-get autoclean
 
