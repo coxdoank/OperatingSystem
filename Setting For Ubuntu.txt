@@ -37,7 +37,14 @@ sudo iptables -A INPUT -p tcp --destination-port 3306 -j ACCEPT (Allow Firewall 
 
 tail -f /var/log/nginx/error.log
 
-sudo nano /etc/php//8.1/fpm/php.ini
+sudo nano /etc/php/8.1/fpm/php.ini
+
+sudo apt install php8.1-mysql
+
+php --modules | grep mysql
+
+sudo ln -s /etc/nginx/sites-available/myweb /etc/nginx/sites-enabled/
+nginx -t
 
 ----------------------------
 
@@ -48,13 +55,3 @@ sudo ufw allow 'Nginx Full' (Now we have to enable the FULL profile)
 sudo ufw status
 
 sudo apt install php8.1-fpm
-
------------------------------
-To clean partial packages
-$ sudo apt-get autoclean
-
-To remove unused dependencies
-$ sudo apt-get autoremove
-
-To auto cleanup apt-cache
-$ sudo apt-get clean
